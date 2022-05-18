@@ -3,7 +3,7 @@ var pennviz = {
   
   loadQueryData: function(queryName){
     var holder = alamode.getColumnsFromQuery(queryName);
-    return dfd.Dataframe(holder);
+    return dfd.DataFrame(holder);
   }
   
 };
