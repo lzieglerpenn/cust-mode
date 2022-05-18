@@ -7,3 +7,5 @@ var pennviz = {
   }
   
 };
+
+console.log('pennviz loaded');
