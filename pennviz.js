@@ -5,17 +5,17 @@ var pennviz = {
     var holder = alamode.getDataFromQuery(queryName);
     var df = new dfd.DataFrame(holder);
     return df
-  }
+  };
 
   mergeQuerys: function(left_query, right_query, on, how='inner'){
       var left = loadQueryData(left_query);
       var right = loadQueryData(right_query);
       var merged_df = dfd.merge(left, right, on, how);
       return merged_df
-  }
+  };
 
   updateTrace: function(xval, yval, chartDiv, dfName, agg='sum') {
-    var selectedData = dfName.loc({rows:[xval], columns: [yval]});
+    var selectedData = dfName.loc({columns: [xval, yval]});
     var layout_update = {
       title: 'some new title', // updates the title
     };
@@ -28,7 +28,7 @@ var pennviz = {
 
 	Plotly.update(chartDiv, data_update, layout_update);
 
-  }
+  };
 
 
     
