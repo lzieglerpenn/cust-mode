@@ -28,18 +28,22 @@ var pennviz = {
 
 	Plotly.update(chartDiv, data_update, layout_update);
 
-  }
+  },
 
+  setXYListener: function() {
+    // add event listener for whichever element has xaxis class & yaxis class
+    var xel = document.getElementsByClassName("xaxis")[0];
+    var yel = document.getElementsByClassName("yaxis")[0];
+    // need to add data-df and data-plot
+    xel.addEventListener('change', pennviz.updateTrace(xel.value, yel.value, xel.dataset.plot, eval(xel.dataset.df)));
+    yel.addEventListener('change', pennviz.updateTrace(xel.value, yel.value, yel.dataset.plot, eval(yel.dataset.df)));
+
+  }
 
     
 };
 
-// add event listener for whichever element has xaxis class & yaxis class
-var xel = document.getElementsByClassName("xaxis")[0];
-var yel = document.getElementsByClassName("yaxis")[0];
-// need to add data-df and data-plot
-xel.addEventListener('change', pennviz.updateTrace(xel.value, yel.value, xel.dataset.plot, eval(xel.dataset.df)));
-yel.addEventListener('change', pennviz.updateTrace(xel.value, yel.value, yel.dataset.plot, eval(yel.dataset.df)));
+
 
 
 
