@@ -1,6 +1,7 @@
 
 .pi-drop {
     padding:8px 10px 5px 10px;
+    margin:10px;
     border: none;
     background: rgba(85,85,85,.1);
     border-radius:15px;
@@ -24,6 +25,7 @@
 
 .pi-btn {
     padding:8px 10px 5px 10px;
+    margin:10px;
     border: 2px solid #18314F;
     background: #18314F;
     border-radius:15px;
@@ -43,7 +45,7 @@
 
 .pi-text {
         border:0;
-        /* border-bottom:2px solid #555; */
+        margin:10px;
         border-radius:15px;
         background:rgba(85,85,85,.1);
         width: 250px;
