@@ -71,19 +71,21 @@ var pennlisten = {
 
           // add event listeners for all existences
           for (item in els) {
-            if (item) {
-              item.addEventListener('change', 
-              pennviz.simpleExplore(
-                xel.value, 
-                yel.value, 
-                xel.dataset.plot, 
-                xel.dataset.df, 
-                agg=aggval, 
-                plotType=typval)
-                );
-            } else {
-              console.log('no item listener');
-            };
+            console.log(item);
+            console.log(item.value);
+            // if (item) {
+            //   item.addEventListener('change', 
+            //   pennviz.simpleExplore(
+            //     xel.value, 
+            //     yel.value, 
+            //     xel.dataset.plot, 
+            //     xel.dataset.df, 
+            //     agg=aggval, 
+            //     plotType=typval)
+            //     );
+            // } else {
+            //   console.log('no item listener');
+            // };
           }
       // end of simpleListen Function
       };
