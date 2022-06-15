@@ -17,11 +17,11 @@ var pennviz = {
   },
 
   simpleExplore: function(xval, yval, chartDiv, dfName, agg='sum', plotType='bar') {
-    var selectedData = dfName.loc({columns: [xval, yval]});
+    df = eval(dfName);
+    var selectedData = df.loc({columns: [xval, yval]});
     var layout_update = {
       title: 'some new title', // updates the title
     };
-    // probs need to group by and shit
     var groupedData = selectedData.groupby([xval]).sum();
     var aggY = yval.concat('_', agg);
     var data_update = {
@@ -76,12 +76,11 @@ var pennlisten = {
               pennviz.simpleExplore(
                 xel.value, 
                 yel.value, 
-                item.dataset.plot, 
-                eval(item.dataset.df), 
+                xel.dataset.plot, 
+                xel.dataset.df, 
                 agg=aggval, 
                 plotType=typval)
                 );
-              console.log(xel.value);
             } else {
               console.log('no item listener');
             };
