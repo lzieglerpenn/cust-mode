@@ -86,7 +86,8 @@ function openEars(listen='simpleListen') {
         }
     // run function from openEars input
     eval(listen);
-
+    simpleListen;
+    console.log('Listen attempt!');
 
   };
 };
