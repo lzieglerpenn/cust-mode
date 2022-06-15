@@ -8,7 +8,7 @@ var pennviz = {
   },
 
   mergeQuerys: function(left_query, right_query, on, how='inner'){
-      var holderl = alamode.getDataFromQuery(left_query);
+      var holder1 = alamode.getDataFromQuery(left_query);
       var left = new dfd.DataFrame(holder1);
       var holder2 = alamode.getDataFromQuery(right_query);
       var right = new dfd.DataFrame(holder2);
