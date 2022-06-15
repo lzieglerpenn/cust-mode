@@ -89,8 +89,8 @@ var pennlisten = {
       // end of simpleListen Function
       };
       // run function from openEars input
-      eval(listen);
-      // simpleListen;
+      // eval(listen);
+      simpleListen();
       console.log('Listen attempt!');
           //  end of open Ears
 
