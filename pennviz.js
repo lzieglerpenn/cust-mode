@@ -74,12 +74,12 @@ var pennlisten = {
             // console.log(els[item]);
             // console.log(els[item].value);
             if (els[item]) {
-              item.addEventListener('change', 
+              els[item].addEventListener('change', 
               pennviz.simpleExplore(
                 xel.value, 
                 yel.value, 
-                xel.dataset.plot, 
-                xel.dataset.df, 
+                els[item].dataset.plot, 
+                els[item].dataset.df, 
                 agg=aggval, 
                 plotType=typval)
                 );
