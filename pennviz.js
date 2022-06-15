@@ -71,8 +71,8 @@ var pennlisten = {
 
           // add event listeners for all existences
           for (item in els) {
-            console.log(item);
-            console.log(item.value);
+            console.log(els[item]);
+            console.log(els[item].value);
             // if (item) {
             //   item.addEventListener('change', 
             //   pennviz.simpleExplore(
