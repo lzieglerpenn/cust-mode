@@ -17,7 +17,14 @@ var pennviz = {
   },
 
   simpleExplore: function(xval, yval, chartDiv, dfName, agg='sum', plotType='bar') {
-    df = eval(dfName);
+    console.log(dfName);
+    console.log('dfname above')
+    var df = eval(dfName);
+    console.log(df);
+    var holder = alamode.getDataFromQuery("Query 1");
+    var df_static = new dfd.DataFrame(holder);
+    console.log('------------');
+    console.log(df_static);
     var selectedData = df.loc({columns: [xval, yval]});
     var layout_update = {
       title: 'some new title', // updates the title
