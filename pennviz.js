@@ -1,5 +1,5 @@
 // dependent on alamode & danfo & Plotly libraries
-var pennviz = {
+var pennpull = {
   
   loadQueryData: function(queryName){
     var holder = alamode.getDataFromQuery(queryName);
@@ -14,30 +14,28 @@ var pennviz = {
       var right = new dfd.DataFrame(holder2);
       var merged_df = dfd.merge(left, right, on, how);
       return merged_df
-  },
+  }
 
-  simpleExplore: function(xval, yval, chartDiv, dfName, agg='sum', plotType='bar') {
-    console.log(dfName);
-    console.log('dfname above')
-    var df = eval(dfName);
+}
+
+var pennviz = {
+
+  simpleExplore: function(xval, yval, chartDiv, leftQueryName, agg='sum', plotType='bar') {
+    var df = pennpull.loadQueryData(leftQueryName);
     console.log(df);
-    var holder = alamode.getDataFromQuery("Query 1");
-    var df_static = new dfd.DataFrame(holder);
-    console.log('------------');
-    console.log(df_static);
-    // var selectedData = df.loc({columns: [xval, yval]});
-  //   var layout_update = {
-  //     title: 'some new title', // updates the title
-  //   };
-  //   var groupedData = selectedData.groupby([xval]).sum();
-  //   var aggY = yval.concat('_', agg);
-  //   var data_update = {
-	// 	  'x': [groupedData[xval].values],
-  //     'y': [groupedData[aggY].values],
-  //     'type': plotType
-  //   };
+    var selectedData = df.loc({columns: [xval, yval]});
+    var layout_update = {
+      title: 'some new title', // updates the title
+    };
+    var groupedData = selectedData.groupby([xval]).sum();
+    var aggY = yval.concat('_', agg);
+    var data_update = {
+		  'x': [groupedData[xval].values],
+      'y': [groupedData[aggY].values],
+      'type': plotType
+    };
 
-	// Plotly.update(chartDiv, data_update, layout_update);
+	Plotly.update(chartDiv, data_update, layout_update);
 
   }
 
