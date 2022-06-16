@@ -25,19 +25,19 @@ var pennviz = {
     var df_static = new dfd.DataFrame(holder);
     console.log('------------');
     console.log(df_static);
-    var selectedData = df.loc({columns: [xval, yval]});
-    var layout_update = {
-      title: 'some new title', // updates the title
-    };
-    var groupedData = selectedData.groupby([xval]).sum();
-    var aggY = yval.concat('_', agg);
-    var data_update = {
-		  'x': [groupedData[xval].values],
-      'y': [groupedData[aggY].values],
-      'type': plotType
-    };
+    // var selectedData = df.loc({columns: [xval, yval]});
+  //   var layout_update = {
+  //     title: 'some new title', // updates the title
+  //   };
+  //   var groupedData = selectedData.groupby([xval]).sum();
+  //   var aggY = yval.concat('_', agg);
+  //   var data_update = {
+	// 	  'x': [groupedData[xval].values],
+  //     'y': [groupedData[aggY].values],
+  //     'type': plotType
+  //   };
 
-	Plotly.update(chartDiv, data_update, layout_update);
+	// Plotly.update(chartDiv, data_update, layout_update);
 
   }
 
