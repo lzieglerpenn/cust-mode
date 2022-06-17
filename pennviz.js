@@ -31,13 +31,16 @@ var pennviz = {
     var layout_update = {
       title: 'Unbridled Exploration!', // updates the title
     };
-    var groupedData = selectedData.groupby([xval]).sum();
+    var groupedData = selectedData.groupby([xval])[agg]();
     var aggY = yval.concat('_', agg);
     var data_update = {
 		  'x': [groupedData[xval].values],
       'y': [groupedData[aggY].values],
       'type': plotType
     };
+    if (plotType == 'scatter') {
+      data_update.mode = 'markers'
+    }
 
 	Plotly.update(chartDiv, data_update, layout_update);
 
