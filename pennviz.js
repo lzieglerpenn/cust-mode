@@ -1,4 +1,4 @@
-// dependent on alamode & danfo & Plotly libraries
+// --------- DEPENDENT on [[alamode, danfo, AlaSQL, & Plotly]] libraries ------------ //
 var pennpull = {
   
   loadQueryData: function(queryName){
@@ -7,12 +7,12 @@ var pennpull = {
     return df
   },
 
-  mergeQuerys: function(left_query, right_query, on, how='inner'){
-      var holder1 = alamode.getDataFromQuery(left_query);
-      var left = new dfd.DataFrame(holder1);
-      var holder2 = alamode.getDataFromQuery(right_query);
-      var right = new dfd.DataFrame(holder2);
-      var merged_df = dfd.merge(left, right, on, how);
+  mergeQuerys: function(left_query, right_query, on, how='INNER'){
+      var left = alamode.getDataFromQuery(left_query);
+      var right = alamode.getDataFromQuery(right_query);
+      var q = `SELECT a.*, b.* FROM ? a ${how} JOIN ? b ON a.${on}=b.${on}`;
+      var merged = alasql(q, [left, right]);
+      var merged_df = new dfd.DataFrame(merged);
       return merged_df
   }
 
@@ -20,12 +20,16 @@ var pennpull = {
 
 var pennviz = {
 
-  simpleExplore: function(xval, yval, chartDiv, leftQueryName, agg='sum', plotType='bar') {
-    var df = pennpull.loadQueryData(leftQueryName);
+  simpleExplore: function(xval, yval, chartDiv, leftQueryName, agg='sum', plotType='bar', rightQueryName, on, how="INNER") {
+    if (rightQueryName) {
+      var df = pennpull.mergeQuerys(leftQueryName, rightQueryName, on, how);
+    } else {
+      var df = pennpull.loadQueryData(leftQueryName);
+    }
     console.log(df);
     var selectedData = df.loc({columns: [xval, yval]});
     var layout_update = {
-      title: 'some new title', // updates the title
+      title: 'Unbridled Exploration!', // updates the title
     };
     var groupedData = selectedData.groupby([xval]).sum();
     var aggY = yval.concat('_', agg);
